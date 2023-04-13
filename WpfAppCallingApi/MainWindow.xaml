@@ -1,0 +1,61 @@
+﻿<Window x:Class="WpfAppCallingApi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppCallingApi"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="lblName" Content="Name :" HorizontalAlignment="Left" Margin="46,44,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCpf" Content="Cpf :" HorizontalAlignment="Left" Margin="53,75,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblType" Content="Type :" HorizontalAlignment="Left" Margin="49,109,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.23,1.786"/>
+        <Label x:Name="lblGender" Content="Gender :" HorizontalAlignment="Left" Margin="42,141,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.012,2.557"/>
+        <Label x:Name="lblSituation" Content="Situation :" HorizontalAlignment="Left" Margin="38,175,0,0" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="99,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCpf" HorizontalAlignment="Left" Margin="99,79,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtClientId" Visibility="Hidden" HorizontalAlignment="Left" Margin="99,27,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <ComboBox x:Name="cbType" HorizontalAlignment="Left"  Margin="99,113,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+        <ComboBox x:Name="cbGender" HorizontalAlignment="Left" Margin="99,145,0,0" VerticalAlignment="Top" Width="120" Height="22">
+            <ComboBoxItem>Masculino</ComboBoxItem>
+            <ComboBoxItem>Feminino</ComboBoxItem>
+            <ComboBoxItem>Outros</ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="cbSituation" HorizontalAlignment="Left" Margin="99,179,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+
+        <Button x:Name="btnInsertClient" Content="Inserir/Editar" HorizontalAlignment="Left" Margin="99,217,0,0" VerticalAlignment="Top" Width="120" Click="btnInsertClient_Click"/>
+
+        <DataGrid x:Name="dgClient" Margin="246,50,34,45"
+                  xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" 
+                  CanUserAddRows="True" 
+                  ItemsSource="{Binding}" 
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header=" ">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnEditClient">Edit</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header=" ">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnDeleteClient">Del</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" MaxWidth="100" />
+                <DataGridTextColumn Header="Cpf" Binding="{Binding Path=Cpf}" MaxWidth="100" />
+                <DataGridTextColumn Header="Tipo" Binding="{Binding Path=Type}" MaxWidth="100" />
+                <DataGridTextColumn Header="Sexo" Binding="{Binding Path=Gender}" MaxWidth="85" />
+                <DataGridTextColumn Header="Situação" Binding="{Binding Path=Situation}" MaxWidth="100" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label x:Name="lblMessage" Content="Message" HorizontalAlignment="Left" Margin="38,258,0,0" VerticalAlignment="Top" Width="181"/>
+
+    </Grid>
+</Window>
